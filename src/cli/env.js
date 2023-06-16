@@ -1,5 +1,3 @@
-import process from "process";
-
 const KEY_PREFIX = "RSS_";
 const FILTER_REGEX = new RegExp(`${KEY_PREFIX}.+`, "g");
 
