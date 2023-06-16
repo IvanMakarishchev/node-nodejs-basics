@@ -8,9 +8,7 @@ const FAIL_MESSAGE = 'FS operation failed';
 const isExists = () => fsProm.stat(FILE_PATH + FILE_NAME).then(() => true).catch(() => false);
 
 const create = async () => {
-    if (await isExists()) {
-        throw new Error(FAIL_MESSAGE);
-      }
+    if (await isExists()) throw new Error(FAIL_MESSAGE);
     fsProm.writeFile(FILE_PATH + FILE_NAME, FILE_PAYLOAD);
 };
 try {
