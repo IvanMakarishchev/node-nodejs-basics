@@ -1,9 +1,9 @@
 import { createReadStream } from "fs";
 
-const PATH_TO_FILE = './files/';
+const FILE_PATH = './files/';
 const FILE_TO_READ = 'fileToRead.txt';
 
-const readable = createReadStream(PATH_TO_FILE + FILE_TO_READ);
+const readable = createReadStream(FILE_PATH + FILE_TO_READ);
 
 const read = async () => {
   readable.pipe(process.stdout);
