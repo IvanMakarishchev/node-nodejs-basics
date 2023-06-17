@@ -1,5 +1,5 @@
 import { createReadStream, createWriteStream } from "fs";
-import { createGzip } from "zlib";
+import { deflate, createGzip } from "zlib";
 
 const FILE_PATH = "./files/";
 const SOURCE_FILE = "fileToCompress.txt";
@@ -9,10 +9,6 @@ const compress = async () => {
   const readable = createReadStream(FILE_PATH + SOURCE_FILE);
   const writable = createWriteStream(FILE_PATH + DEST_FILE);
   readable.pipe(createGzip()).pipe(writable);
-}
+};
 
-try {
-  await compress();
-} catch (e) {
-  console.error(e);
-}
+await compress();
