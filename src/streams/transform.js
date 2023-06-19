@@ -1,5 +1,21 @@
+import { Transform, pipeline } from "stream";
+
 const transform = async () => {
-    // Write your code here 
+  const textReverse = new Transform({
+    transform(chunk, _, callback) {
+      callback(
+        null,
+        `${chunk.toString().trim().split("").reverse().join("")}\n`
+      );
+    },
+  });
+  pipeline(process.stdin, textReverse, process.stdout, (err) => {
+    throw new Error(`Error occured: ${err}`);
+  });
 };
 
-await transform();
+try {
+  await transform();
+} catch (e) {
+  console.error(e);
+}
